@@ -1,142 +1,232 @@
-<h2>Welcome to the Home Page</h2><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Student Performance Predictor</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Student Performance Predictor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 
-<style>
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+        :root {
+            --teal: #2a7d6f;
+            --teal-light: #3da898;
+            --teal-dark: #1b5c51;
+            --teal-glow: rgba(42, 125, 111, 0.18);
+            --bg: #0f1f1d;
+            --bg-mid: #152724;
+            --surface: #1a3330;
+            --border: rgba(42, 125, 111, 0.25);
+            --border-strong: rgba(61, 168, 152, 0.5);
+            --text: #e8f5f3;
+            --text-muted: #7ab8b0;
+            --text-dim: #4d8a82;
+        }
 
-body {
-    font-family: 'Poppins', sans-serif;
-    height: 100vh;
-    overflow: hidden;
-    color: white;
+        body {
+            font-family: 'DM Sans', sans-serif;
+            min-height: 100vh;
+            background-color: var(--bg);
+            background-image:
+                radial-gradient(ellipse at 15% 15%, rgba(42, 125, 111, 0.12) 0%, transparent 55%),
+                radial-gradient(ellipse at 85% 85%, rgba(27, 92, 81, 0.1) 0%, transparent 55%),
+                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%232a7d6f' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            color: var(--text);
+        }
 
-    /* Deep premium gradient */
-    background: radial-gradient(circle at 20% 30%, rgba(255,255,255,0.1), transparent 30%),
-                radial-gradient(circle at 80% 70%, rgba(255,255,255,0.08), transparent 30%),
-                linear-gradient(135deg, #1e3c72, #2a5298, #6a11cb);
-}
+        /* Ambient background blobs */
+        .bg-shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(110px);
+            opacity: 0.25;
+            pointer-events: none;
+        }
 
-/* Floating blur elements */
-.bg-shape {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(100px);
-    opacity: 0.4;
-}
+        .bg1 {
+            width: 360px;
+            height: 360px;
+            background: var(--teal);
+            top: 5%;
+            left: 5%;
+        }
 
-.bg1 {
-    width: 300px;
-    height: 300px;
-    background: #6a11cb;
-    top: 10%;
-    left: 10%;
-}
+        .bg2 {
+            width: 280px;
+            height: 280px;
+            background: var(--teal-dark);
+            bottom: 8%;
+            right: 8%;
+        }
 
-.bg2 {
-    width: 250px;
-    height: 250px;
-    background: #2575fc;
-    bottom: 10%;
-    right: 10%;
-}
+        /* Hero */
+        .hero {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 40px 24px;
+            animation: rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+        }
 
-.hero {
-    position: relative;
-    z-index: 2;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+        @keyframes rise {
+            from { opacity: 0; transform: translateY(28px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
 
-    animation: fadeIn 1.2s ease-in-out;
-}
+        /* Icon */
+        .hero-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--teal-dark), var(--teal-light));
+            margin-bottom: 20px;
+            box-shadow: 0 4px 24px var(--teal-glow), 0 0 0 1px var(--border-strong);
+        }
 
-h1 {
-    font-size: 48px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    margin-bottom: 15px;
-}
+        .hero-icon svg {
+            width: 28px;
+            height: 28px;
+            fill: #fff;
+        }
 
-p {
-    font-size: 18px;
-    max-width: 650px;
-    opacity: 0.9;
-    line-height: 1.6;
-}
+        /* Divider */
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 0 auto 24px;
+            width: 240px;
+        }
 
-/* Button */
-.btn {
-    margin-top: 30px;
-    padding: 14px 32px;
-    font-size: 16px;
-    border-radius: 30px;
-    border: none;
-    background: white;
-    color: #2a5298;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    font-weight: 500;
-}
+        .divider-line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--teal));
+        }
 
-.btn:hover {
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0px 10px 25px rgba(0,0,0,0.3);
-}
+        .divider-line:last-child {
+            background: linear-gradient(to left, transparent, var(--teal));
+        }
 
-/* Glass card */
-.card {
-    margin-top: 40px;
-    padding: 25px;
-    border-radius: 20px;
+        .divider-diamond {
+            width: 6px;
+            height: 6px;
+            background: var(--teal-light);
+            transform: rotate(45deg);
+            flex-shrink: 0;
+        }
 
-    background: rgba(255,255,255,0.1);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(255,255,255,0.2);
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 44px;
+            font-weight: 700;
+            color: var(--text);
+            letter-spacing: -0.5px;
+            line-height: 1.15;
+            margin-bottom: 10px;
+        }
 
-    max-width: 550px;
-    font-size: 16px;
-    line-height: 1.5;
-}
+        .subtitle {
+            font-size: 11px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--teal-light);
+            margin-bottom: 24px;
+            font-weight: 500;
+        }
 
-/* Animation */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+        p {
+            font-size: 16px;
+            max-width: 560px;
+            color: var(--text-muted);
+            line-height: 1.7;
+            font-weight: 300;
+            margin-bottom: 32px;
+        }
 
-</style>
+        /* CTA Button */
+        .btn {
+            display: inline-block;
+            padding: 14px 36px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 3px;
+            background: linear-gradient(135deg, var(--teal-dark) 0%, var(--teal) 50%, var(--teal-light) 100%);
+            color: #fff;
+            cursor: pointer;
+            transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s;
+            box-shadow: 0 4px 18px var(--teal-glow);
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 36px;
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(255,255,255,0.1) 0%, transparent 100%);
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 28px rgba(42, 125, 111, 0.45);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        @media (max-width: 520px) {
+            h1 { font-size: 30px; }
+            p { font-size: 15px; }
+        }
+    </style>
 </head>
 
 <body>
 
-<!-- Background effects -->
 <div class="bg-shape bg1"></div>
 <div class="bg-shape bg2"></div>
 
 <div class="hero">
 
-    <h1>Student Performance Predictor</h1>
+    <div class="hero-icon">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+        </svg>
+    </div>
+
+    <p class="subtitle">Academic Intelligence</p>
+
+    <h1>Student Performance<br>Predictor</h1>
+
+    <div class="divider">
+        <div class="divider-line"></div>
+        <div class="divider-diamond"></div>
+        <div class="divider-line"></div>
+    </div>
 
     <p>
         Predict academic outcomes using machine learning models trained on real student data.
@@ -147,10 +237,7 @@ p {
         Get Started
     </a>
 
-    <div class="card">
-        Built with a complete machine learning pipeline, including data preprocessing,
-        model training, and real-time prediction through a web interface.
-    </div>
+
 
 </div>
 
