@@ -103,10 +103,14 @@ http://localhost:5000
 ---
 
 ##  Demo 
-![Welcome page](images/application.png)
-![Homepage](images/app-homepage.png)
+![Welcome page](images/welcome_page.png)
+
+![Homepage](images/application.png)
+
 ![Prediction](images/prediction.png)
+
 ![Deployment](images/deployment_sucess.png)
+
 ![File Architecture](images/file_architecture.png)
 
 
